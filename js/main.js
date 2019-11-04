@@ -5,8 +5,7 @@ $(document).ready(function(){
       computeTotalCost();
   });
 $(".addDependent").click(function(){
-    $("#dependents").append("<div class=\"form-group\"><label for=\"employeeEmail\" class=\"col-sm-2 col-form-label\">Dependent\'s Name</label><input type=\"text\" placeholder=\"Dependent\'s Name\" class=\"form-control dependent\" ><span> X 500 </div>");
-
+    $("#dependents").append("<div class=\"input-group\" id = \"dependents\"><span class=\"input-group-addon\">Dependent's Name</span><input type=\"text\" placeholder=\"Dependent\'s Name\" class=\"form-control dependent\"></input></div>");
 });
 
 function computeTotalCost() {
@@ -38,5 +37,9 @@ var benefitsTotalCost = dependents + discount
 var totalCost = totalCostBeforeDeductions - benefitsTotalCost;
 
 console.log("totalCost*discount "+totalCost +" * " + discount +" = " + totalCost);
-  $("#totalCost").text(totalCostBeforeDeductions + " - " + benefitsTotalCost +  " = " + totalCost)};
+$("#totalCostBeforeDeductions").text( totalCostBeforeDeductions);
+$("#benefitsTotalCost").text( benefitsTotalCost );
+$("#totalCost").text(totalCost);
+}
+
 });
