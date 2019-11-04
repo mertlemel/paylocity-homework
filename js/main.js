@@ -21,19 +21,18 @@ $(document).ready(function() {
 			console.log(thisDependentsFirstLetter);
 			if (thisDependentsFirstLetter == "a") {
 				totalDependentsBenefitsCost += dependentBenefitsCost * discount;
-				this.append("<span> X 10%</span>")
 			} else {
 				totalDependentsBenefitsCost += dependentBenefitsCost
 			}
 		})
 
 		var employeeNameFirstLetter = $("#employeeName").val().charAt(0);
+    var totalEmployeeBenefitsCost = 0;
 		if (employeeNameFirstLetter == "a") {
-			employeeBenefitsCost = discount * employeeBenefitsCost;
-			$("#nameStartsWithA").removeClass("hidden");
+			totalEmployeeBenefitsCost = discount * employeeBenefitsCost;
 		}
 		var totalCostBeforeDeductions = employeeSalaryPerYear;
-		var benefitsTotalCost = totalDependentsBenefitsCost + employeeBenefitsCost
+		var benefitsTotalCost = totalDependentsBenefitsCost + totalEmployeeBenefitsCost
 		var totalCost = totalCostBeforeDeductions - benefitsTotalCost;
 
 		$("#totalCostBeforeDeductions").text("$" + totalCostBeforeDeductions);
