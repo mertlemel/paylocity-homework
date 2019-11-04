@@ -27,7 +27,7 @@ $(document).ready(function() {
 		})
 
 		var employeeNameFirstLetter = $("#employeeName").val().charAt(0);
-    var totalEmployeeBenefitsCost = 0;
+    var totalEmployeeBenefitsCost = employeeBenefitsCost;
 		if (employeeNameFirstLetter == "a") {
 			totalEmployeeBenefitsCost = discount * employeeBenefitsCost;
 		}
