@@ -5,7 +5,7 @@ $(document).ready(function(){
       computeTotalCost();
   });
 $(".addDependent").click(function(){
-    $("#dependents").append("<div class=\"form-group\"><label for=\"employeeEmail\" class=\"col-sm-2 col-form-label\">Dependent\'s Name</label><input type=\"text\" placeholder=\"Dependent\'s Name\" class=\"form-control dependent\" ><span> X 500 <span  class = \"hidden aName\"> X 10%</p></div>");
+    $("#dependents").append("<div class=\"form-group\"><label for=\"employeeEmail\" class=\"col-sm-2 col-form-label\">Dependent\'s Name</label><input type=\"text\" placeholder=\"Dependent\'s Name\" class=\"form-control dependent\" ><span> X 500 </div>");
 
 });
 
@@ -16,7 +16,8 @@ function computeTotalCost() {
     var thisDependent = this.value.charAt(0);
     console.log(thisDependent);
     if(thisDependent == "a"){
-      dependents += 500*.1;
+      dependents += 500*.9;
+      this.append("<span> X 10%</span>")
     }
     else {
     dependents += 500
@@ -29,14 +30,13 @@ function computeTotalCost() {
 
   var discount = 1000
   if( employeeNameFirstLetter == "a"){
-    discount = .1 * 1000;
+    discount = .9 * 1000;
     $("#nameStartsWithA").removeClass("hidden");
 }
-var totalCostBeforDeductions = 2000 * 26;
-var totalCost = totalCostBeforDeductions - dependents;
-totalCost = totalCost - discount;
+var totalCostBeforeDeductions = 2000 * 26;
+var benefitsTotalCost = dependents + discount
+var totalCost = totalCostBeforeDeductions - benefitsTotalCost;
 
 console.log("totalCost*discount "+totalCost +" * " + discount +" = " + totalCost);
-  $("#totalCost").text( totalCost);
-};
+  $("#totalCost").text(totalCostBeforeDeductions + " - " + benefitsTotalCost +  " = " + totalCost)};
 });
