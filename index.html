@@ -45,16 +45,18 @@
 
             <form class="" role="form">
               <div class="form-group">
-                <input type="text" placeholder="Employee's Name" class="form-control" id ="employeeName">
+                <label for="employeeEmail" class="col-sm-2 col-form-label">Employee Name</label>
+                <input type="text" placeholder="Employee's Name" class="form-control" id ="employeeName"><span> X 1000 <span id = "nameStartsWithA" class = "hidden"> X 10%</p>
               </div>
-              <div class="form-group">
-                <input type="text" placeholder="Number of Dependents" class="form-control" id = "dependents">
+              <div class="form-group" id = "dependents">
+                  <button  type = "button" class="btn btn-outline-secondary addDependent ">Add Dependent</button>
               </div>
               <div class = "form-group">
-              <button type="submit" class="btn btn-success" id="submit">Submit</button>
+              <button type="button" class="btn btn-success" id="submit">Submit</button>
               </div>
             </form>
             <h4 id = "response" class = "hidden">Employee Total Benefits Cost:  </h4>
+
             <h4 id = "totalCost"></h4>
           </div>
         </div>
