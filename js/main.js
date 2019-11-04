@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  var dependentBenefitsCost = 500;
+  var discount = .9;
+  var employeeBenefitsCost = 1000;
+  var employeeSalaryPerMonth = 2000;
+  var employeeSalaryPerYear = employeeSalaryPerMonth *26;
 
 	$("#submit").click(function() {
 		$("#response").removeClass("hidden");
@@ -10,27 +15,25 @@ $(document).ready(function() {
 	});
 
 	function computeTotalCost() {
-		// var dependents = $(".dependents").val() * 500;
-		dependents = 0;
+		totalDependentsBenefitsCost = 0;
 		$(".dependent").each(function() {
-			var thisDependent = this.value.charAt(0);
-			console.log(thisDependent);
-			if (thisDependent == "a") {
-				dependents += 500 * .9;
+			var thisDependentsFirstLetter = this.value.charAt(0);
+			console.log(thisDependentsFirstLetter);
+			if (thisDependentsFirstLetter == "a") {
+				totalDependentsBenefitsCost += dependentBenefitsCost * discount;
 				this.append("<span> X 10%</span>")
 			} else {
-				dependents += 500
+				totalDependentsBenefitsCost += dependentBenefitsCost
 			}
 		})
 
 		var employeeNameFirstLetter = $("#employeeName").val().charAt(0);
-		var discount = 1000
 		if (employeeNameFirstLetter == "a") {
-			discount = .9 * 1000;
+			employeeBenefitsCost = discount * employeeBenefitsCost;
 			$("#nameStartsWithA").removeClass("hidden");
 		}
-		var totalCostBeforeDeductions = 2000 * 26;
-		var benefitsTotalCost = dependents + discount
+		var totalCostBeforeDeductions = employeeSalaryPerYear;
+		var benefitsTotalCost = totalDependentsBenefitsCost + employeeBenefitsCost
 		var totalCost = totalCostBeforeDeductions - benefitsTotalCost;
 
 		$("#totalCostBeforeDeductions").text("$" + totalCostBeforeDeductions);
